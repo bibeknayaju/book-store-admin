@@ -1,0 +1,21 @@
+.sidebar_div {
+  display: flex;
+  font-size: 18px;
+  gap: 12px;
+  padding: 0.3rem; /* Remove quotes */
+  font-size: 1.2rem;
+}
+
+.sidebar_menu:hover {
+  background-color: #6943bd !important;
+  color: white !important;
+  transition: all ease-in-out 5s;
+}
+
+.item {
+  padding: 1rem !important;
+}
+
+.sidebar_menu::before {
+  background: #ffffff !important;
+}
