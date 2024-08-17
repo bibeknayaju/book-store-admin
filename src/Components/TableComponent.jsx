@@ -3,34 +3,7 @@ import { Table } from "semantic-ui-react";
 import DropDownComponent from "./DropDownComponent";
 
 function TableComponent({ tableHeaders, tableItems }) {
-  // Define a map to associate header names with data properties
-  const headerToPropertyMap = {
-    "Book Title": "name",
-    Price: "price",
-    Quantity: "quantity",
-    Amount: "amount",
-    Rating: "rating",
-    "In Stock": "inStock",
-    Name: "name",
-    Email: "email",
-    Phone: "phone",
-    Address: "address",
-    City: "city",
-    State: "state",
-    Company: "company",
-    Zipcode: "zipcode",
-    "Order Number": "orderNumber",
-    "Customer Name": "customerName",
-    "Order Date": "orderDate",
-    "Total Amount": "totalAmount",
-    "Delivery Number": "deliveryNumber",
-    "Delivery Date": "deliveryDate",
-  };
-
-  console.log("Table Headers:", tableHeaders);
-  console.log("Table Items:", tableItems);
-  console.log("Header to Property Map:", headerToPropertyMap);
-
+  console.log(tableItems);
   return (
     <Table
       celled
@@ -49,10 +22,77 @@ function TableComponent({ tableHeaders, tableItems }) {
         {tableItems.map((item) => (
           <Table.Row key={item.id}>
             {tableHeaders.map((header) => {
-              // Handle "Action" header separately
-              if (header === "Action") {
-                return (
-                  <Table.Cell key={header}>
+              let cellContent = "-";
+
+              switch (header) {
+                case "Book Title":
+                  cellContent = item.name || "-";
+                  break;
+                case "Price":
+                  cellContent = item.price || "-";
+                  break;
+                case "Quantity":
+                  cellContent = item.quantity || "-";
+                  break;
+                case "Amount":
+                  cellContent = item.amount || "-";
+                  break;
+                case "Rating":
+                  cellContent = item.rating || "-";
+                  break;
+                case "In Stock":
+                  cellContent = item.inStock ? "Yes" : "No";
+                  break;
+                case "Name":
+                  cellContent = item.name || "-";
+                  break;
+                case "Email":
+                  cellContent = item.email || "-";
+                  break;
+                case "Phone":
+                  cellContent = item.phone || "-";
+                  break;
+                case "Address":
+                  cellContent = item.address || "-";
+                  break;
+                case "City":
+                  cellContent = item.city || "-";
+                  break;
+                case "State":
+                  cellContent = item.state || "-";
+                  break;
+                case "Company":
+                  cellContent = item.company || "-";
+                  break;
+                case "Zipcode":
+                  cellContent = item.zipcode || "-";
+                  break;
+                case "Order Number":
+                  cellContent = item.orderNumber || "-";
+                  break;
+                case "Customer Name":
+                  cellContent = item.customerName || "-";
+                  break;
+                case "Order Date":
+                  cellContent = item.orderDate || "-";
+                  break;
+                case "Total Amount":
+                  cellContent = item.totalAmount || "-";
+                  break;
+                case "Delivery Number":
+                  cellContent = item.deliveryNumber || "-";
+                  break;
+                case "Customer Name":
+                  cellContent = item.customerName || "-";
+                  break;
+                case "Delivery Date":
+                  cellContent = item.deliveryDate || "-";
+                  break;
+                case "Status":
+                  cellContent = item.status || "-";
+                  break;
+                case "Action":
+                  cellContent = (
                     <DropDownComponent
                       description1={"ctrl + E"}
                       description2={"ctrl + D"}
@@ -60,20 +100,13 @@ function TableComponent({ tableHeaders, tableItems }) {
                       item2={"Delete"}
                       title={"Actions"}
                     />
-                  </Table.Cell>
-                );
+                  );
+                  break;
+                default:
+                  cellContent = "-";
               }
-              // Map headers to properties
-              const property = headerToPropertyMap[header];
-              console.log(
-                `Header: ${header}, Property: ${property}, Value: ${item[property]}`
-              );
-              // Render the appropriate item property or empty if property does not exist
-              return (
-                <Table.Cell key={header}>
-                  {property ? item[property] || "-" : "-"}
-                </Table.Cell>
-              );
+
+              return <Table.Cell key={header}>{cellContent}</Table.Cell>;
             })}
           </Table.Row>
         ))}
