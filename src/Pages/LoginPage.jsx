@@ -17,7 +17,13 @@ function LoginPage() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (email === "admin@gmail.com" && password === "admin") {
+    const newEmail = email.toLowerCase();
+    const newPassword = password.toLowerCase();
+    if (
+      newEmail === "admin@gmail.com" &&
+      newPassword === "admin" &&
+      !userLoggedIn
+    ) {
       localStorage.setItem("isLoggedIn", true);
       navigate("/");
     } else {
