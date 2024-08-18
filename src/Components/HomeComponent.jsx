@@ -265,7 +265,7 @@ function HomeComponent() {
               key={item.id}
               style={{
                 width: "100%",
-                maxWidth: "680px",
+                maxWidth: "650px",
                 background: "#ffffff",
                 borderRadius: "8px",
                 boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
@@ -284,7 +284,7 @@ function HomeComponent() {
                 data={item.data}
                 categories={item.categories}
                 chartType={item.chartType}
-                width={635}
+                width={500}
                 height={420}
                 colors={item.colors}
               />
