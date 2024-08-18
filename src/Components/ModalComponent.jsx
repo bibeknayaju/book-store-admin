@@ -1,19 +1,12 @@
-import React, { useState } from "react";
-import {
-  ModalContent,
-  ModalActions,
-  Button,
-  Header,
-  Icon,
-  Modal,
-} from "semantic-ui-react";
+import React from "react";
+import { Modal, Header, Icon, Button } from "semantic-ui-react";
 
-function ModalComponent({ trigger, header, content, children, open, setOpen }) {
+function ModalComponent({ trigger, header, children, open, onClose, onOpen }) {
   return (
     <Modal
       closeIcon
-      onClose={() => setOpen(false)}
-      onOpen={() => setOpen(true)}
+      onClose={onClose}
+      onOpen={onOpen}
       open={open}
       size="small"
       trigger={trigger}>
@@ -27,15 +20,7 @@ function ModalComponent({ trigger, header, content, children, open, setOpen }) {
         />
         {header}
       </Header>
-      <ModalContent>{children}</ModalContent>
-      <ModalActions>
-        <Button basic color="red" inverted onClick={() => setOpen(false)}>
-          <Icon name="remove" /> Cancel
-        </Button>
-        <Button color="green" inverted onClick={() => setOpen(false)}>
-          <Icon name="checkmark" /> Add Book
-        </Button>
-      </ModalActions>
+      <Modal.Content>{children}</Modal.Content>
     </Modal>
   );
 }

@@ -57,18 +57,24 @@ function LoginPage() {
             gap: "1rem",
           }}>
           <FormComponent
-            label1Type={"email"}
-            label2Type={"password"}
-            value1={email}
-            value2={password}
-            onValueChange1={(e) => setEmail(e.target.value)}
-            onValueChange2={(e) => setPassword(e.target.value)}
-            buttonText={"Login"}
-            label1={"Email"}
-            label2={"Password"}
+            buttonText="Login"
             onSubmitFunction={handleLogin}
-            placeholder1={"Enter your email"}
-            placeholder2={"Enter your password"}
+            fields={[
+              {
+                label: "Email",
+                placeholder: "Enter your email",
+                type: "email",
+                value: email,
+                onChange: (e) => setEmail(e.target.value),
+              },
+              {
+                label: "Password",
+                placeholder: "Enter your password",
+                type: "password",
+                value: password,
+                onChange: (e) => setPassword(e.target.value),
+              },
+            ]}
           />
         </div>
 

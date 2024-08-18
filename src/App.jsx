@@ -8,7 +8,6 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/*" element={<Dashboard />} /> */}
         <Route element={<PrivateRoute />}>
           <Route path={"/*"} element={<Dashboard />} />
         </Route>

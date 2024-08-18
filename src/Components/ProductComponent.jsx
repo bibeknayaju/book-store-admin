@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Checkbox, Grid, Icon, Segment, Table } from "semantic-ui-react";
+import { Grid, Icon, Popup, Segment, Table } from "semantic-ui-react";
 import RowLayout from "./RowLayout";
-import DropDownComponent from "./DropDownComponent";
 import Chart from "./Chart";
 import ModalComponent from "./ModalComponent";
 import FormComponent from "./FormComponent";
@@ -129,12 +128,13 @@ const tableItems = [
 const chartItems = [
   {
     id: 1,
-    chartId: "chart1", // Unique ID for the first chart
+    chartId: "chart1",
     data: [["Revenue", 30, 200, 100, 400, 150, 250]],
     categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     chartType: "area-spline",
     title: "Revenue",
   },
+  // You can add more charts here
 ];
 
 const tableHeaders = [
@@ -163,15 +163,20 @@ function ProductComponent() {
       rating: 4.5,
       inStock: "In Stock",
     });
+    setBookTitle("");
+    setPrice("");
     setOpen(false);
   };
+
+  const handleOpenModal = () => setOpen(true);
+  const handleCloseModal = () => setOpen(false);
   return (
     <div
       style={{
-        background: "#F6F6F6",
-        padding: "1rem",
+        background: "#f6f6f6",
         display: "flex",
         flexDirection: "column",
+        padding: "0.5rem",
       }}>
       <div
         style={{
@@ -179,7 +184,8 @@ function ProductComponent() {
           alignItems: "end",
           justifyContent: "end",
         }}>
-        <ModalComponent
+        <Popup
+          content="Add New Book"
           trigger={
             <Icon
               style={{
@@ -188,31 +194,45 @@ function ProductComponent() {
                 cursor: "pointer",
               }}
               name="plus"
+              onClick={handleOpenModal} // Open modal on icon click
             />
           }
-          setOpen={setOpen}
+        />
+
+        <ModalComponent
           open={open}
+          onClose={handleCloseModal}
+          onOpen={handleOpenModal}
           content={"Add a new book to the store's inventory."}
           header={"Add Book"}>
           <Segment>
             <FormComponent
-              buttonText={"Add Book"}
-              label1={"Book Title"}
-              label2={"Price"}
+              buttonText="Add Book"
               onSubmitFunction={handleAddBook}
-              onValueChange1={(e) => setBookTitle(e.target.value)}
-              onValueChange2={(e) => setPrice(e.target.value)}
-              placeholder1={"Enter book title"}
-              placeholder2={"Enter price"}
-              value1={bookTitle}
-              value2={price}
-              label2Type={"number"}
-              label1Type={"text"}
+              fields={[
+                {
+                  label: "Book Title",
+                  placeholder: "Enter book title",
+                  type: "text",
+                  value: bookTitle,
+                  onChange: (e) => setBookTitle(e.target.value),
+                  name: "bookTitle",
+                },
+                {
+                  label: "Price",
+                  placeholder: "Enter price",
+                  type: "number",
+                  value: price,
+                  onChange: (e) => setPrice(e.target.value),
+                  name: "price",
+                },
+              ]}
             />
           </Segment>
         </ModalComponent>
       </div>
       <Grid
+        className="grid_div"
         style={{
           padding: "1rem",
           margin: "0.5rem",
@@ -233,6 +253,7 @@ function ProductComponent() {
         ))}
       </Grid>{" "}
       <Segment
+        className="segment_table_chart_div"
         style={{
           display: "flex",
         }}>
@@ -240,18 +261,37 @@ function ProductComponent() {
           <TableComponent tableHeaders={tableHeaders} tableItems={tableItems} />
         </div>
 
-        <div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "2rem",
+            alignItems: "center",
+          }}>
           {chartItems.map((item) => (
-            <Chart
+            <div
               key={item.id}
-              id={item.chartId}
-              data={item.data}
-              categories={item.categories}
-              title={item.title}
-              chartType={item.chartType}
-              width={635}
-              height={420}
-            />
+              style={{
+                width: "100%",
+                maxWidth: "700px",
+                background: "#ffffff",
+                borderRadius: "8px",
+                padding: "1.5rem",
+                boxSizing: "border-box",
+              }}>
+              <h3 style={{ marginBottom: "1rem", color: "#333" }}>
+                {item.title}
+              </h3>
+              <Chart
+                id={item.chartId}
+                data={item.data}
+                categories={item.categories}
+                chartType={item.chartType}
+                width={635}
+                height={420}
+                colors={["#3498db", "#e74c3c", "#2ecc71"]}
+              />
+            </div>
           ))}
         </div>
       </Segment>

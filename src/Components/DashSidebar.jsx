@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Sidebar, Menu } from "semantic-ui-react";
+import { Sidebar, Menu, Icon } from "semantic-ui-react";
 import { RxDashboard } from "react-icons/rx";
 import { LuShoppingBag } from "react-icons/lu";
 import { GoTag } from "react-icons/go";
@@ -11,6 +11,7 @@ import { CiShoppingTag } from "react-icons/ci";
 import { IoChatboxOutline } from "react-icons/io5";
 import { CiSettings } from "react-icons/ci";
 import { CiDeliveryTruck } from "react-icons/ci";
+import { GiBlackBook } from "react-icons/gi";
 
 const items = [
   {
@@ -82,7 +83,7 @@ function DashSidebar({ isLargeScreen, setSidebarOpen, sidebarOpen }) {
     <Sidebar
       as={Menu}
       style={{
-        backgroundColor: "#212631",
+        backgroundColor: "#f6f6f6",
         width: "18rem",
         boxShadow: "none",
         height: "100vh",
@@ -103,8 +104,15 @@ function DashSidebar({ isLargeScreen, setSidebarOpen, sidebarOpen }) {
             display: "flex",
             alignItems: "center",
             height: "4rem",
-            color: "#6943BE",
+            color: "#000",
+            gap: "0.5rem",
           }}>
+          <GiBlackBook
+            style={{
+              fontSize: "25px",
+              color: "#6943BE",
+            }}
+          />
           <span style={{ fontSize: "25px" }}>
             Book <span style={{ color: "#" }}>Store</span>
           </span>
@@ -120,8 +128,8 @@ function DashSidebar({ isLargeScreen, setSidebarOpen, sidebarOpen }) {
             className="sidebar_menu"
             style={{
               borderRadius: isActive ? "0 10px 10px 0 !important" : "",
-              backgroundColor: isActive ? "#2A303D" : "",
-              color: isActive ? "#FFFFFF" : "#FFFFFF",
+              backgroundColor: isActive ? "#F6F1FF" : "",
+              color: isActive ? "#000" : "",
               borderLeft: isActive ? "4px solid #6943BE" : "",
               padding: "1rem",
             }}>

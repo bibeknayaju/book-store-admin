@@ -12,9 +12,16 @@ function TableComponent({ tableHeaders, tableItems }) {
         color: "grey",
       }}>
       <Table.Header>
-        <Table.Row>
+        <Table.Row
+          style={{
+            display: "flex !important",
+            flexDirection: "row !important",
+          }}
+          className="table_header">
           {tableHeaders.map((header) => (
-            <Table.HeaderCell key={header}>{header}</Table.HeaderCell>
+            <Table.HeaderCell key={header} style={{ flex: 1 }}>
+              {header}
+            </Table.HeaderCell>
           ))}
         </Table.Row>
       </Table.Header>
@@ -105,8 +112,8 @@ function TableComponent({ tableHeaders, tableItems }) {
                   cellContent = (
                     <img
                       style={{
-                        width: "50px",
-                        height: "50px",
+                        width: "35px",
+                        height: "35px",
                         objectFit: "cover",
                         borderRadius: "100px",
                       }}

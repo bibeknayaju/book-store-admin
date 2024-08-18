@@ -114,6 +114,7 @@ function OrderComponent() {
   return (
     <Segment
       style={{
+        marginLeft: "20px",
         height: "100vh",
         borderRadius: "10px",
         padding: "20px",

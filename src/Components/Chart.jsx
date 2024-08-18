@@ -12,7 +12,6 @@ function Chart({
   width,
   colors = ["#6943BE"],
 }) {
-  console.log(id);
   useEffect(() => {
     // Create a chart
     const chart = c3.generate({
@@ -62,7 +61,6 @@ function Chart({
         borderRadius: "5px",
         background: "white",
         padding: "1rem",
-        // height: "fit-content",
       }}
       id={id}></div>
   );

@@ -11,3 +11,56 @@
 .ui.vertical.sidebar.menu > .item::before {
   height: 0;
 }
+
+@media screen and (max-width: 1024px) {
+  .grid_div {
+    grid-template-columns: 1fr !important;
+  }
+  .home_chart_div {
+    margin-top: 20px !important;
+    flex-direction: column !important;
+  }
+  .segment_table_chart_div {
+    flex-direction: column !important;
+  }
+  .home_table_chart_div {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .grid_div {
+    grid-template-columns: 1fr !important;
+  }
+  .home_chart_div {
+    margin-top: 20px !important;
+    flex-direction: column !important;
+  }
+  .home_table_chart_div {
+    grid-template-columns: 1fr !important;
+  }
+  .segment_table_chart_div {
+    flex-direction: column !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .grid_div {
+    grid-template-columns: 1fr !important;
+  }
+  .home_chart_div {
+    margin-top: 20px !important;
+    flex-direction: column !important;
+  }
+  .home_table_chart_div {
+    grid-template-columns: 1fr !important;
+  }
+  .segment_table_chart_div {
+    flex-direction: column !important;
+  }
+}
+
+.modal {
+  color: black !important;
+  background: #1d222b !important;
+}

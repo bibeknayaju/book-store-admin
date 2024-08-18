@@ -1,22 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Icon, Placeholder, Segment } from "semantic-ui-react";
+import React from "react";
+import { Icon } from "semantic-ui-react";
 import DropDownComponent from "./DropDownComponent";
 
 function RowLayout({ title, total, percentage, icon, profit, loss }) {
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-
-    return () => clearTimeout(timer); // Cleanup the timer
-  }, []);
-
-  return loading ? (
-    <Placeholder />
-  ) : (
+  return (
     <div
+      className="rowLayout_div"
       style={{
         height: "10rem",
         borderRadius: "0.5rem",

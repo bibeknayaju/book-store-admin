@@ -4,7 +4,7 @@ import "c3/c3.css";
 import Chart from "./Chart";
 import TopSellingProducts from "./TopSellingProducts";
 import MonthlyTarget from "./MonthlyTarget";
-import { Flag, Grid } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 import TableComponent from "./TableComponent";
 import { userData } from "../data";
 
@@ -42,15 +42,16 @@ const items = [
 const chartItems = [
   {
     id: 1,
-    chartId: "chart1", // Unique ID for the first chart
+    chartId: "chart1",
     data: [["Revenue", 30, 200, 100, 400, 150, 250]],
     categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     chartType: "bar",
     title: "Revenue",
+    colors: ["#3498db"], // Custom color for the bar chart
   },
   {
     id: 2,
-    chartId: "chart2", // Unique ID for the second chart
+    chartId: "chart2",
     data: [
       [
         "setosa",
@@ -212,9 +213,10 @@ const chartItems = [
         1.8,
       ],
     ],
-    title: "Demo Chart",
+    title: "Petal Length Distribution",
     categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     chartType: "donut",
+    colors: ["#e74c3c", "#2ecc71", "#f39c12"], // Custom colors for the donut chart
   },
 ];
 
@@ -222,9 +224,10 @@ function HomeComponent() {
   return (
     <div
       style={{
-        background: "#F6F6F6",
+        background: "#f6f6f6",
       }}>
       <Grid
+        className="grid_div"
         style={{
           padding: "1rem",
           margin: "0.5rem",
@@ -246,50 +249,80 @@ function HomeComponent() {
       </Grid>
       <div
         style={{
-          display: "flex",
-          justifyContent: "",
-          gap: "1rem",
-          margin: "1rem",
-          borderRadius: "5px",
+          padding: "2rem",
+          backgroundColor: "#f4f4f9",
         }}>
-        {chartItems.map((item) => (
-          <Chart
-            key={item.id}
-            id={item.chartId}
-            data={item.data}
-            categories={item.categories}
-            width={635}
-            height={420}
-            chartType={item.chartType}
-          />
-        ))}
+        <div
+          className="home_chart_div"
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            gap: "2rem",
+            alignItems: "center",
+          }}>
+          {chartItems.map((item) => (
+            <div
+              key={item.id}
+              style={{
+                width: "100%",
+                maxWidth: "680px",
+                background: "#ffffff",
+                borderRadius: "8px",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                padding: "1.5rem",
+                boxSizing: "border-box",
+              }}>
+              <h3
+                style={{
+                  marginBottom: "1rem",
+                  color: "#333",
+                }}>
+                {item.title}
+              </h3>
+              <Chart
+                id={item.chartId}
+                data={item.data}
+                categories={item.categories}
+                chartType={item.chartType}
+                width={635}
+                height={420}
+                colors={item.colors}
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
       <div
+        className="home_table_chart_div"
         style={{
           padding: "1rem",
           gap: "1rem",
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
-          backgroundColor: "#fff",
         }}>
         <TopSellingProducts />
         <MonthlyTarget />
       </div>
 
-      <TableComponent
-        tableHeaders={[
-          "Joined At",
-          "Image",
-          "Name",
-          "Country",
-          "Email",
-          "Phone",
-          "Payment Method",
-          "Joined At",
-        ]}
-        tableItems={userData}
-      />
+      <div
+        style={{
+          padding: "1rem",
+        }}>
+        <TableComponent
+          tableHeaders={[
+            "Joined At",
+            "Image",
+            "Name",
+            "Country",
+            "Email",
+            "Phone",
+            "Payment Method",
+            "Joined At",
+          ]}
+          tableItems={userData}
+        />
+      </div>
     </div>
   );
 }

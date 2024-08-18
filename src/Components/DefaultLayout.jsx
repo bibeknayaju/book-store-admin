@@ -3,6 +3,7 @@ import { Segment } from "semantic-ui-react";
 import "./DefaultLayout.css";
 import Navbar from "./Navbar";
 import DashSidebar from "./DashSidebar";
+import BreadcrumbComponent from "./BreadcrumbComponent";
 
 const DefaultLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -18,7 +19,11 @@ const DefaultLayout = ({ children }) => {
   }, []);
 
   return (
-    <div style={{ display: "flex", minHeight: "100vh" }}>
+    <div
+      style={{
+        display: "flex",
+        minHeight: "100vh",
+      }}>
       {/* Sidebar */}
       <DashSidebar
         setSidebarOpen={setSidebarOpen}
@@ -30,7 +35,7 @@ const DefaultLayout = ({ children }) => {
       <div
         style={{
           flex: 1,
-          marginLeft: isLargeScreen ? "18rem" : "0",
+          marginLeft: isLargeScreen ? "17rem" : "0",
           overflowY: "auto",
         }}>
         <Segment basic>
@@ -39,6 +44,7 @@ const DefaultLayout = ({ children }) => {
             sidebarOpen={sidebarOpen}
             setSidebarOpen={setSidebarOpen}
           />
+          <BreadcrumbComponent />
         </Segment>
 
         {/* Main Content */}

@@ -7,7 +7,6 @@ import {
   PlaceholderParagraph,
   Segment,
 } from "semantic-ui-react";
-import PlaceHolder from "./PlaceHolder";
 
 const tableHeaders = [
   "Name",
@@ -61,6 +60,7 @@ function CustomerComponent() {
   return (
     <Segment
       style={{
+        marginLeft: "20px",
         height: "100vh",
         borderRadius: "10px",
         padding: "20px",

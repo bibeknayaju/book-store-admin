@@ -9,11 +9,10 @@ import {
 } from "semantic-ui-react";
 import { CiBellOn } from "react-icons/ci";
 import { CiSearch } from "react-icons/ci";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = ({ setSidebarOpen, isLargeScreen, sidebarOpen }) => {
   const navigate = useNavigate();
-  const location = useLocation();
 
   const logoutFunction = () => {
     return {
@@ -25,7 +24,6 @@ const Navbar = ({ setSidebarOpen, isLargeScreen, sidebarOpen }) => {
   return (
     <div
       style={{
-        borderBottom: "1px solid #d4d4d5",
         boxShadow: "0 1px 2px 0 rgba(34,36,38,.15)",
       }}>
       <div
@@ -61,17 +59,42 @@ const Navbar = ({ setSidebarOpen, isLargeScreen, sidebarOpen }) => {
               alignItems: "center",
               gap: "1rem",
             }}>
-            <span
+            <Link
+              to={"/"}
               style={{
                 paddingLeft: "1rem",
-                fontSize: "25px",
-                color: "#6943BE",
+                fontSize: "15px",
+                cursor: "pointer",
+                color: "grey",
                 textTransform: "capitalize",
               }}>
-              {location.pathname.split("/")[1]
+              {/* {location.pathname.split("/")[1]
                 ? location.pathname.split("/")[1]
-                : "Dashboard"}
-            </span>
+                : "Dashboard"} */}
+              Dashboard
+            </Link>
+            <Link
+              to={"/customers"}
+              style={{
+                paddingLeft: "1rem",
+                fontSize: "15px",
+                cursor: "pointer",
+                color: "grey",
+                textTransform: "capitalize",
+              }}>
+              Customers
+            </Link>
+            <Link
+              to={"/products"}
+              style={{
+                paddingLeft: "1rem",
+                fontSize: "15px",
+                cursor: "pointer",
+                color: "grey",
+                textTransform: "capitalize",
+              }}>
+              Products
+            </Link>
           </div>
 
           <div
@@ -117,7 +140,6 @@ const Navbar = ({ setSidebarOpen, isLargeScreen, sidebarOpen }) => {
                 }}
                 text={"admin"}>
                 <DropdownMenu>
-                  {/* <DropdownItem text={item1} description={description1} /> */}
                   <DropdownItem
                     onClick={logoutFunction}
                     text={"Logout"}
@@ -125,8 +147,6 @@ const Navbar = ({ setSidebarOpen, isLargeScreen, sidebarOpen }) => {
                   />
                 </DropdownMenu>
               </Dropdown>
-
-              {/* <Icon name="caret down" /> */}
             </Menu.Item>
           </div>
         </div>
