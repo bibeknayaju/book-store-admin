@@ -30,7 +30,7 @@ const DefaultLayout = ({ children }) => {
       <div
         style={{
           flex: 1,
-          marginLeft: isLargeScreen ? "16rem" : "0",
+          marginLeft: isLargeScreen ? "18rem" : "0",
           overflowY: "auto",
         }}>
         <Segment basic>

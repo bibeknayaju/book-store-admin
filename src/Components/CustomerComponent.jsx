@@ -66,7 +66,7 @@ function CustomerComponent() {
         padding: "20px",
       }}>
       {" "}
-      {loading && (
+      {loading ? (
         <Placeholder
           style={{
             width: "100%",
@@ -83,8 +83,9 @@ function CustomerComponent() {
             <PlaceholderLine length="short" />
           </PlaceholderParagraph>
         </Placeholder>
+      ) : (
+        <TableComponent tableHeaders={tableHeaders} tableItems={tableItems} />
       )}
-      <TableComponent tableHeaders={tableHeaders} tableItems={tableItems} />
     </Segment>
   );
 }

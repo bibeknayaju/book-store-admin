@@ -7,3 +7,7 @@
 .segment_div {
   margin: 0 !important;
 }
+
+.ui.vertical.sidebar.menu > .item::before {
+  height: 0;
+}

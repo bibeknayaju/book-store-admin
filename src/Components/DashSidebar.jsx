@@ -82,7 +82,8 @@ function DashSidebar({ isLargeScreen, setSidebarOpen, sidebarOpen }) {
     <Sidebar
       as={Menu}
       style={{
-        width: "16rem",
+        backgroundColor: "#212631",
+        width: "18rem",
         boxShadow: "none",
         height: "100vh",
         position: "fixed",
@@ -119,9 +120,10 @@ function DashSidebar({ isLargeScreen, setSidebarOpen, sidebarOpen }) {
             className="sidebar_menu"
             style={{
               borderRadius: isActive ? "0 10px 10px 0 !important" : "",
-              backgroundColor: isActive ? "#F5F3FF" : "",
-              color: isActive ? "#6943BE" : "#000000",
+              backgroundColor: isActive ? "#2A303D" : "",
+              color: isActive ? "#FFFFFF" : "#FFFFFF",
               borderLeft: isActive ? "4px solid #6943BE" : "",
+              padding: "1rem",
             }}>
             <div className="sidebar_div">
               {item.icon}

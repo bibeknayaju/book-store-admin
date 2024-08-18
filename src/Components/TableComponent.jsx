@@ -1,9 +1,10 @@
 import React from "react";
-import { Table } from "semantic-ui-react";
+import { Flag, Table } from "semantic-ui-react";
 import DropDownComponent from "./DropDownComponent";
 
 function TableComponent({ tableHeaders, tableItems }) {
-  console.log(tableItems);
+  const flagRender = (item) => <Flag name={item.countryCode} />;
+
   return (
     <Table
       celled
@@ -90,6 +91,29 @@ function TableComponent({ tableHeaders, tableItems }) {
                   break;
                 case "Status":
                   cellContent = item.status || "-";
+                  break;
+                case "Country":
+                  cellContent = flagRender(item) || "-";
+                  break;
+                case "Payment Method":
+                  cellContent = item.paymentMethod || "-";
+                  break;
+                case "Joined At":
+                  cellContent = item.createdAt || "-";
+                  break;
+                case "Image":
+                  cellContent = (
+                    <img
+                      style={{
+                        width: "50px",
+                        height: "50px",
+                        objectFit: "cover",
+                        borderRadius: "100px",
+                      }}
+                      src={item.image}
+                      alt="product"
+                    />
+                  );
                   break;
                 case "Action":
                   cellContent = (

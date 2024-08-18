@@ -4,7 +4,9 @@ import "c3/c3.css";
 import Chart from "./Chart";
 import TopSellingProducts from "./TopSellingProducts";
 import MonthlyTarget from "./MonthlyTarget";
-import { Grid } from "semantic-ui-react";
+import { Flag, Grid } from "semantic-ui-react";
+import TableComponent from "./TableComponent";
+import { userData } from "../data";
 
 const items = [
   {
@@ -274,6 +276,20 @@ function HomeComponent() {
         <TopSellingProducts />
         <MonthlyTarget />
       </div>
+
+      <TableComponent
+        tableHeaders={[
+          "Joined At",
+          "Image",
+          "Name",
+          "Country",
+          "Email",
+          "Phone",
+          "Payment Method",
+          "Joined At",
+        ]}
+        tableItems={userData}
+      />
     </div>
   );
 }
